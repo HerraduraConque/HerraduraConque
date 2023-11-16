@@ -1,100 +1,188 @@
 <?php
+   ob_start();
+   session_start();
+   require_once('inc/config.php');
+?>
+    <!DOCTYPE html>
+    <html lang="es">
 
-/************************************************************************/
-/* AppServ Open Project                                          */
-/* ===========================                                          */
-/*                                                                      */
-/* Copyright (c) 2001 by Phanupong Panyadee (apples@chek.com)         */
-/* http://academic.cmri.ac.th/appserv                                                  */
-/*                                                                      */
-/* This program is free software. You can redistribute it and/or modify */
-/* it under the terms of the GNU General Public License as published by */
-/* the Free Software Foundation; either version 2 of the License.       */
-/************************************************************************/
-$appserv_root = "appserv";
-include("appserv/main.php");
+    <head>
 
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="img/favicon.png" type="image/x-icon" />
+        <title>Cotowers 3.0 Online - Servidor Clásico v5095</title>
 
-print "
-<html>
-<head>
-<title>AppServ Open Project</title>
-<meta http-equiv=\"Content-Type\" content=\"text/html; charset=\""._CHARSET."\">
-<style>
-<!-- Hide style for old browsers 
-BODY          {font-family: MS Sans Serif;font-size=\"10\"}
-.headd { font-family: Helvetica,Verdana ; font-size: 13pt; text-decoration:  none; }
-.app { font-family: MS Sans Serif ; font-size: 10pt; text-decoration:  none; }
-A:link    {text-decoration: none; color: #0000FF}
-A:visited {text-decoration: none; color: #0000FF}
-A:hover   {text-decoration: none; color: #FF0000}
-A:active  {text-decoration: none; color: #FF0000}
--->
-</style>
-</head>
-<body bgcolor=\"#FFFFFF\">
-<div align=\"left\"> 
-  <table border=\"0\" width=\"100%\" height=\"19\">
-    <tr bgcolor=\"#D2E9FF\"> 
-      <td width=\"100%\" height=\"19\" valign=\"top\"><font color=\"#000080\">
-	  <span class=\"headd\"><strong><big>&nbsp; The AppServ Open Project - "._APPVERSION." "._FOR." "._OS." </big></strong></span></font></td>
-    </tr>
-  </table>
-  
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="fonts/fa-regular.css">
+        <link rel="stylesheet" type="text/css" href="fonts/simple-line-icons.css">
+        <link rel="stylesheet" type="text/css" href="css/slicknav.css">
+        <link rel="stylesheet" type="text/css" href="css/nivo-lightbox.css">
+        <link rel="stylesheet" type="text/css" href="css/animate.css">
+        <link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/responsive.css">
+
+    </head>
+
+    <body>
+
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/es_LA/sdk/xfbml.customerchat.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Your customer chat code -->
+<div class="fb-customerchat"
+  attribution=setup_tool
+  page_id="215786008463229"
+  logged_in_greeting="¡Hola! Bienvenido a Cotowers."
+  logged_out_greeting="¡Hola! Bienvenido a Cotowers.">
 </div>
-<div align=\"left\"> 
-  <table width=\"100%\" border=\"0\">
-    <tr bgcolor=\"#F9FBFF\"> 
-      <td height=\"344\"> 
-        <blockquote> 
-          <p><font color=\"#000080\"><span
-    class=\"headd\"><strong><br>
-	            <img src=\"appserv/members.gif\" width=\"20\"
-    height=\"20\" align=\"absmiddle\"> <span class=\"app\"><a href=\""._LPHPMYADMIN."/\">"._PHPMYADMIN." "._VERSION." "._VPHPMYADMIN."</a><br>
-            <img src=\"appserv/account.gif\" width=\"20\"
-    height=\"20\" align=\"absmiddle\"> <span class=\"app\"><a href=\""._LPHPNUKE."/\">"._PHPNUKE." "._VERSION." "._VPHPNUKE."</a>
-	<br>
-	            <img
-    src=\"appserv/annoicon.gif\" width=\"20\" height=\"20\" align=\"absmiddle\"> <a href=\""._LPHPMYADMIN."/phpinfo.php\">"._PHPINFO." "._VERSION." "._VPHP."</a></span> <br>
-		<img src=\"appserv/email.gif\" width=\"20\"
-    height=\"20\" align=\"absmiddle\"> <a href=\""._LPHPBB."/\">"._PHPBB." "._VERSION." "._VPHPBB." </a><br>
-	<img src=\"appserv/email.gif\" width=\"20\"
-    height=\"20\" align=\"absmiddle\"> <a href=\""._LPHPNUKE."/INSTALL\">"._NUKEDOC."</a></span><br>
 
+            <?php
+		$id = ($_GET['id']) ? $_GET['id'] : $_POST['id'];
+		switch($id)
+		{
+		default:
+		require 'pages/inicio.php';
+		break;
 
-            </strong></span></font> </p>
-          <p><span
-    class=\"app\"><u>"._ABOUT." "._APPSERV." "._VERSION." "._APPVERSION." "._FOR." "._OS."</u><br>
-            "._APPSERV." "._IS." <br>
-            -<a href=\"http://www.apache.org\"> "._APACHE." "._VERSION." "._VAPACHE."</a><br>
-            - <a href=\"http://www.php.net\">"._PHP." "._VERSION." "._VPHP."</a><br>
-            - <a href=\"http://www.mysql.com\">"._MYSQL." "._VERSION." "._VMYSQL."</a><br>
-            - <a href=\"http://www.phpnuke.org\">"._PHPNUKE." "._VERSION." "._VPHPNUKE."</a><br>
-            - <a href=\"http://phpmyadmin.sourceforge.net\">"._PHPMYADMIN." "._VERSION." "._VPHPMYADMIN."</a><br>
-			- <a href=\"http://phpbb.sourceforge.net\">"._PHPBB." "._VERSION." "._VPHPBB."</a>
-			
-			</span> 
-          </p>
-        </blockquote>
-        <ul>
-          <li><a href=\"appserv/ChangeLog.txt\"><span class=\"app\">"._CHANGELOG."</span></a></li>
-          <li> <a href=\"appserv/README-$appservlang.php?appservlang=$appservlang\"><span class=\"app\">"._README."</span></a></li>
-          <li><a href=\"appserv/AUTHORS.txt\"><span class=\"app\">"._AUTHOR."</span></a></li>
-          <li><a href=\"appserv/COPYING.txt\"><span class=\"app\">"._COPYING."</span></a></li>
-          <li><span class=\"app\"> "._SITE." : <a href=\"http://academic.cmri.ac.th/appserv\">http://academic.cmri.ac.th/appserv</a>  
-		 </li> </ul>
+		case 'registro':
+		require 'pages/registro.php';
+		break;
 
-&nbsp; &nbsp; &nbsp; &nbsp;<b> "._LANG." : </b><a href=\"index.php?appservlang=th\"><img src=\"appserv/flag-thai.png\" width=\"30\" height=\"16\" align=\"absmiddle\" border=\"0\"></a>&nbsp; <a href=\"index.php?appservlang=en\"><img src=\"appserv/flag-english.png\" width=\"30\" height=\"16\" align=\"absmiddle\" border=\"0\"></a> 
-<br><br>
-      </td>
-    </tr>
-    <tr> 
-      <td height=\"19\" bgcolor=\"#D2E9FF\"><font color=\"#000080\" class=\"headd\">&nbsp;&nbsp;&nbsp;<img src=\"appserv/softicon.gif\" width=\"20\" height=\"20\" align=\"absmiddle\">&nbsp;<b>"._SLOGAN."</b> </font></td>
-    </tr>
-  </table>  
-</div>
-</body>
+		case 'descargar':
+		require 'pages/descargar.php';
+		break;
+
+		case 'comprar':
+		require 'pages/comprar.php';
+		break;
+
+		case 'sesion':
+		require 'pages/sesion.php';
+		break;
+
+		case 'perfil':
+		require 'pages/perfil.php';
+		break;
+
+		case 'clan':
+		require 'pages/clan.php';
+		break;
+
+		case 'eventogm':
+		require 'pages/eventogm.php';
+		break;
+
+		case 'cerrar':
+		require 'pages/cerrar.php';
+		break;
+
+		case 'olvide':
+		require 'pages/olvide.php';
+		break;
+
+		case 'panel':
+		require 'pages/panel.php';
+		break;
+
+		case 'email':
+		require 'pages/email.php';
+		break;
+
+		case 'datos':
+		require 'pages/datos.php';
+		break;
+
+		case 'eliminado':
+		require 'pages/eliminado.php';
+		break;
+
+		case 'topjugador':
+		require 'pages/topjugador.php';
+		break;
+
+		case 'torneospk':
+		require 'pages/torneospk.php';
+		break;
+
+		case 'puntos':
+		require 'pages/puntos.php';
+		break;
+
+		case 'sorteo':
+		require 'pages/sorteos.php';
+		break;
+
+		case 'puntero':
+		require 'pages/puntero.php';
+		break;
+		}
+            ?>
+
+                <footer class="footer-area section-padding">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="footer-text text-center">
+                                    <ul class="social-icon">
+                                        <li>
+                                            <a class="facebook" href="https://www.facebook.com/groups/Cotowers/"><i class="icon-social-facebook"></i></a>
+                                        </li>
+                                        <li>
+                                            <a class="twitter" href="#"><i class="icon-social-twitter"></i></a>
+                                        </li>
+                                        <li>
+                                            <a class="instagram" href="#"><i class="icon-social-instagram"></i></a>
+                                        </li>
+                                    </ul>
+                                    <p>Copyright © 2018 | Cotowers 3.0 Online</p>
+                                    <ul class="nav nav-inline justify-content-center ">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" href="#">Acerca de Cotowers</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">Terminos y Condiciones</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">Preguntas Frecuentes</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#https://www.facebook.com/CarlosG93">Contacto</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+
+                <script src="js/jquery-min.js"></script>
+                <script src="js/popper.min.js"></script>
+                <script src="js/bootstrap.min.js"></script>
+                <script src="js/jquery.countdown.min.js"></script>
+                <script src="js/jquery.counterup.min.js"></script>
+                <script src="js/jquery.parallax.js"></script>
+                <script src="js/waypoints.min.js"></script>
+                <script src="js/wow.js"></script>
+                <script src="js/owl.carousel.min.js"></script>
+                <script src="js/jquery.slicknav.js"></script>
+                <script src="js/nivo-lightbox.js"></script>
+                <script src="js/jquery.slicknav.js"></script>
+                <script src="js/main.js"></script>
+                <script src="js/form-validator.min.js"></script>
+                <script src="js/map.js"></script>
+                <script src="fonts/fa-regular.js"></script>
+
+    </body>
 </html>
-";
-
-			?>
+<?php
+ob_end_flush();
+?>
